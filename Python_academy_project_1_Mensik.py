@@ -1,27 +1,6 @@
-ODDELOVAC = "-" * 65
-REGISTERED_USER = {
-    "bob": "123",
-    "ann": "pass123",
-    "mike": "password123",
-    "liz": "pass123"
-}
-
-print(ODDELOVAC)
-print("Welcome to the app. Please log in: ")
-
-username = input("USERNAME: ")
-password = input("PASSWORD: ")
-
-ATTEMP = 3
-
-while REGISTERED_USER.get(username) != password:
-    print("Wrong username or password. You have " + str(ATTEMP) + "/3 attemps left.")
-    ATTEMP = ATTEMP - 1
-    if ATTEMP == -1:
-        print("You ran out of attemps!")
-        quit()
-    username = input("USERNAME: ")
-    password = input("PASSWORD: ")
+'''
+author = David Mensik
+'''
 
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer, 
@@ -53,7 +32,32 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
-print(ODDELOVAC)
+SEPARATOR = "-" * 65
+REGISTERED_USERS = {
+    "bob": "123",
+    "ann": "pass123",
+    "mike": "password123",
+    "liz": "pass123"
+}
+
+print(SEPARATOR)
+print("Welcome to the app. Please log in: ")
+
+username = input("USERNAME: ")
+password = input("PASSWORD: ")
+
+ATTEMPT = 3
+
+while REGISTERED_USERS.get(username) != password:
+    print("Wrong username or password. You have " + str(ATTEMPT) + "/3 attempts left.")
+    ATTEMPT = ATTEMPT - 1
+    if ATTEMPT == -1:
+        print("You ran out of attempts!")
+        quit()
+    username = input("USERNAME: ")
+    password = input("PASSWORD: ")
+
+print(SEPARATOR)
 print("We have 3 texts to be analyzed.")
 choice = input("Enter a number btw. 1 and 3 to select: ")
 
@@ -61,11 +65,10 @@ while choice not in ["1","2","3"]:
     print("You must enter number between 1 and 3!")
     choice = input("Enter a number btw. 1 and 3 to select: ")
 
-print(ODDELOVAC)
+print(SEPARATOR)
 
 choice = int(choice)
-
-words_split = TEXTS[choice -1].split()
+words_split = TEXTS[choice - 1].split()
 words_count = len(words_split)
 
 words_titlecase = 0
@@ -93,14 +96,14 @@ while words_split:
         words_numeric = words_numeric
 
 print("There are " + str(words_count) + " words in the selected text.")
-print("There are " + str(words_titlecase) + " titlecase words")
-print("There are " + str(words_uppercase) + " uppercase words")
-print("There are " + str(words_lowercase) + " lowercase words")
-print("There are " + str(words_numeric) + " numeric strings")
+print("There are " + str(words_titlecase) + " titlecase words.")
+print("There are " + str(words_uppercase) + " uppercase words.")
+print("There are " + str(words_lowercase) + " lowercase words.")
+print("There are " + str(words_numeric) + " numeric strings.")
 
-print(ODDELOVAC)
+print(SEPARATOR)
 
-words_split = TEXTS[choice -1].split()
+words_split = TEXTS[choice - 1].split()
 
 bar = []
 
@@ -120,7 +123,7 @@ while word_count <= max(bar):
     else:
         word_count = word_count + 1
 
-words_split = TEXTS[choice -1].split()
+words_split = TEXTS[choice - 1].split()
 numeric_words = []
 
 while words_split:
@@ -131,8 +134,8 @@ while words_split:
     else:
         num_word = num_word
 
-print(ODDELOVAC)
+print(SEPARATOR)
 print("If we summed all the numbers in this text we would get: " + str(sum(numeric_words)))
-print(ODDELOVAC)
+print(SEPARATOR)
 
 

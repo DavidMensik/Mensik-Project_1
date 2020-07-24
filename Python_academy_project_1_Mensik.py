@@ -46,12 +46,12 @@ print("Welcome to the app. Please log in: ")
 username = input("USERNAME: ")
 password = input("PASSWORD: ")
 
-ATTEMPT = 3
+attempt = 3
 
 while REGISTERED_USERS.get(username) != password:
-    print("Wrong username or password. You have " + str(ATTEMPT) + "/3 attempts left.")
-    ATTEMPT = ATTEMPT - 1
-    if ATTEMPT == -1:
+    print("Wrong username or password. You have " + str(attempt) + "/3 attempts left.")
+    attempt = attempt - 1
+    if attempt == -1:
         print("You ran out of attempts!")
         quit()
     username = input("USERNAME: ")

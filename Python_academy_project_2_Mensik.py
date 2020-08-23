@@ -73,10 +73,8 @@ def finish(bulls, cows, secret_num, attempt):
             print("Not bad, not bad at all.")
         elif attempt in range(10, 15):
             print("Poor average.")
-        elif attempt in range(15, 20):
-            print("What a waste of time.")
         else:
-            print("Just give up already...")
+            print(f"Well, {attempt} attempts... What a waste of time.")
         exit()
     else:
         print(f"{bulls} bulls, {cows} cows")

@@ -4,7 +4,6 @@ import random
 def main():
     greeting()
     secret_num = secret_number()
-    print(secret_num)
     attempt = 0
 
     while secret_num:

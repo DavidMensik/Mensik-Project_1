@@ -4,6 +4,7 @@ import random
 def main():
     greeting()
     secret_num = secret_number()
+    print(secret_num)
     attempt = 0
 
     while secret_num:
@@ -11,6 +12,8 @@ def main():
         user_num = guess(secret_num)
         bulls, cows = counting(user_num, secret_num)
         finish(bulls, cows, secret_num, attempt)
+        if bulls == len(secret_num):
+            score_eval(attempt)
 
 
 def greeting():
@@ -22,8 +25,7 @@ Let's play a bulls and cows game.
 
 
 def secret_number():
-    secret_num = "".join(random.sample("0123456789", 4))
-    return secret_num
+    return "".join(random.sample("0123456789", 4))
 
 
 def guess(secret_num):
@@ -51,34 +53,44 @@ def guess(secret_num):
 def counting(user_num, secret_num):
     bulls = 0
     cows = 0
-    i = 0
-    for num in user_num:
+    for i, num in enumerate(user_num):
         if num == secret_num[i]:
             bulls += 1
-            i += 1
         elif num in secret_num:
             cows += 1
-            i += 1
-        else:
-            i += 1
     return bulls, cows
 
 
 def finish(bulls, cows, secret_num, attempt):
     if bulls == len(secret_num):
-        print(f"Correct, you've guessed the right number in {attempt} attempts.")
-        if attempt in range(0, 5):
-            print("WOW!!! How... How did you do that?!")
-        elif attempt in range(5, 10):
-            print("Not bad, not bad at all.")
-        elif attempt in range(10, 15):
-            print("Poor average.")
-        else:
-            print(f"Well, {attempt} attempts... What a waste of time.")
-        exit()
+        print(f"Correct, you've won the game in {attempt} attempts.")
+    elif bulls <= 1 and cows >= 2:
+        print(f"{bulls} bull, {cows} cows")
+        print("-" * 25)
+    elif bulls >= 2 and cows <= 1:
+        print(f"{bulls} bulls, {cows} cow")
+        print("-" * 25)
+    elif bulls <= 1 and cows <= 1:
+        print(f"{bulls} bull, {cows} cow")
+        print("-" * 25)
     else:
         print(f"{bulls} bulls, {cows} cows")
         print("-" * 25)
+
+
+def score_eval(attempt):
+    if attempt in range(0, 5):
+        print("WOW!!! How... How did you do that?!")
+        exit()
+    elif attempt in range(5, 10):
+        print("Not bad, not bad at all.")
+        exit()
+    elif attempt in range(10, 15):
+        print("Poor average.")
+        exit()
+    else:
+        print(f"Well, {attempt} attempts... What a waste of time.")
+        exit()
 
 
 main()

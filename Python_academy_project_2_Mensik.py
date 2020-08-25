@@ -93,4 +93,3 @@ def score_eval(attempt):
 
 
 main()
-
